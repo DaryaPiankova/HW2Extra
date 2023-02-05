@@ -1,23 +1,18 @@
-﻿using System.IO;
-
-string content = File.ReadAllText("input.txt");
-                
-                
-int ScndMax = (int)Char.GetNumericValue(content[0]);
-int firstMax = (int)Char.GetNumericValue(content[0]);
-
-for(int i=0; i<content.Length; i++){
-    if((int)Char.GetNumericValue(content[i])>firstMax){
-        firstMax=(int)Char.GetNumericValue(content[i]);
-    }
+﻿Console.Clear();
+Console.WriteLine("введите последовательность чисел ");
+int n= Convert.ToInt32(Console.ReadLine());
+int max1=n;
+int max2=n;
+while(n!=0){
+n= Convert.ToInt32(Console.ReadLine());
+if (max2<n && max2<max1){
+    max2=max1;
+}else if(max2>n && max2==max1){
+    max2=n;
 }
-for(int j=0; j<content.Length; j++){
-    if((int)Char.GetNumericValue(content[j])!=firstMax){
-        if((int)Char.GetNumericValue(content[j])>ScndMax){
-        ScndMax=(int)Char.GetNumericValue(content[j]);
-        }
-    }
+if(max1<n){
+    max1=n; 
 }
-StreamWriter sw = new StreamWriter("output.txt");
-sw.WriteLine(ScndMax); 
-sw.Close();
+
+}
+Console.WriteLine(max2);
